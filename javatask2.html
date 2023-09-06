@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Todo App</h1>
+    <div class="todo-form">
+      <input type="text" v-model="newTodo" @keydown.enter="addTodo" placeholder="Add new todo">
+      <button @click="addTodo">Add</button>
+    </div>
+    <ul class="todo-list">
+      <li v-for="(todo, index) in todos" :key="index">
+        <span :class="{ completed: todo.completed }" @click="toggleCompleted(index)">{{ todo.text }}</span>
+        <button @click="deleteTodo(index)">Delete</button>
+      </li>
+    </ul>
+    <p>Example of JavaScript methods:</p>
+    <p>String Method Example: <span id="stringExample">Hello, World!</span></p>
+    <p>Number Method Example: <span id="numberExample">42.555</span></p>
+    <p>Array Method Example: <span id="arrayExample">1,2,3,4,5</span></p>
+    <p>Date Method Example: <span id="dateExample">Fri Sep 02 2023</span></p>
+    <p>Function Method Example: <span id="functionExample">Result will appear here</span></p>
+  </div>
+  <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // String method: toUpperCase
+    const stringExample = document.getElementById("stringExample");
+    stringExample.textContent = stringExample.textContent.toUpperCase();
+
+    // Number method: toFixed
+    const numberExample = document.getElementById("numberExample");
+    const num = parseFloat(numberExample.textContent);
+    numberExample.textContent = num.toFixed(2);
+
+    // Array method: join
+    const arrayExample = document.getElementById("arrayExample");
+    const array = [1, 2, 3, 4, 5];
+    arrayExample.textContent = array.join(", ");
+
+    // Date method: toDateString
+    const dateExample = document.getElementById("dateExample");
+    const date = new Date("2023-09-02");
+    dateExample.textContent = date.toDateString();
+
+    // Function method: apply
+    const functionExample = document.getElementById("functionExample");
+    function sum(a, b) {
+      return a + b;
+    }
+    const args = [3, 5];
+    const result = sum.apply(null, args);
+    functionExample.textContent = result;
+  </script>
+</body>
+</html>
